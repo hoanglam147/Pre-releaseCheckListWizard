@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-
+using BaseCode;
 namespace BaseApplication
 {
     public partial class FormBaseApp : Form
@@ -25,10 +25,13 @@ namespace BaseApplication
         private int width__ComboBoxFieldbus = 0;
         private int width__ComboBoxImageSaving = 0;
         private int width__ComboBoxDiagnostics = 0;
+        private int width_groupBoxContains = 0;
+        private int width_FormBaseAppActiveForm = 477;
         public FormBaseApp()
         {
             InitializeComponent();
             InitComboAllComboBoxItem();
+            
         }
         
         private void groupBoxContains_Enter(object sender, EventArgs e)
@@ -83,6 +86,8 @@ namespace BaseApplication
             width__ComboBoxFieldbus = comboBoxFieldbus.Width;
             width__ComboBoxImageSaving = comboBoxImageSaving.Width;
             width__ComboBoxDiagnostics = comboBoxDiagnostics.Width;
+            width_groupBoxContains = groupBoxContains.Width; // add one line  here save width of group box
+            
             // clear all combo box
             comboBoxMatrixType.Items.Clear();
             comboBoxCurrentFW.Items.Clear();
@@ -104,15 +109,19 @@ namespace BaseApplication
                 comboBoxFieldbus, comboBoxDiagnostics
                 };
             return allCbx;
+            
+            
         }
         private const double gain = 1.2;
+        private int t_width__ComboBoxCode1 = 0;
+        private int t_width__ComboBoxCode2 = 0;
         private void OnComboBoxSelectedChange(object sender, EventArgs e)
         {
             int a = groupBoxContains.Width;
             int b = FormBaseApp.ActiveForm.Width;
-            //width__ComboBoxCode1 = comboBoxCode1.Width;
-            //width__ComboBoxCode2 = comboBoxCode2.Width;
-            //width__ComboBoxModes = comboBoxModes.Width;
+            t_width__ComboBoxCode1 = comboBoxCode1.Width;
+            t_width__ComboBoxCode2 = comboBoxCode2.Width;
+            
 
             Size textSize = new Size();
             if(comboBoxCode1.Text != "")
@@ -143,16 +152,28 @@ namespace BaseApplication
                 else if(comboBoxCode2.Text.Length < 4)
                 {
                     //comboBoxCode2.Width = (int)(textSize.Width * (gain + 0.8));
+                    comboBoxCode2.Width = width__ComboBoxCode2;
                 }
                 else
                 {
                     //comboBoxCode2.Width = (int)(textSize.Width * (gain + 0.4));
+                    comboBoxCode2.Width = width__ComboBoxCode2;
                 }
-            }            
-            groupBoxContains.Width = a + comboBoxCode1.Width + comboBoxCode2.Width - width__ComboBoxCode1 - width__ComboBoxCode2;
-            groupBoxDeviceInfo.Width = groupBoxContains.Width;
-            comboBoxModes.Width = width__ComboBoxModes + comboBoxCode1.Width + comboBoxCode2.Width - width__ComboBoxCode1 - width__ComboBoxCode2;
-            FormBaseApp.ActiveForm.Width = b + groupBoxContains.Width - a;
+            }
+            if(comboBoxCode1.Width != width__ComboBoxCode1 || comboBoxCode2.Width != width__ComboBoxCode2)
+            {
+                groupBoxContains.Width = a + comboBoxCode1.Width + comboBoxCode2.Width - t_width__ComboBoxCode1 - t_width__ComboBoxCode2;
+                groupBoxDeviceInfo.Width = groupBoxContains.Width;
+                comboBoxModes.Width = width__ComboBoxModes + comboBoxCode1.Width + comboBoxCode2.Width - t_width__ComboBoxCode1 - t_width__ComboBoxCode2;
+                FormBaseApp.ActiveForm.Width = b + groupBoxContains.Width - a;
+            }
+            else
+            {
+                comboBoxModes.Width = width__ComboBoxModes;
+                groupBoxContains.Width = width_groupBoxContains;
+                groupBoxDeviceInfo.Width = width_groupBoxContains;
+                FormBaseApp.ActiveForm.Width = width_FormBaseAppActiveForm;
+            }
         }
     }
 }
