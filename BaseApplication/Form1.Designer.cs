@@ -56,6 +56,8 @@
             this.labelCode = new System.Windows.Forms.Label();
             this.buttonExport = new System.Windows.Forms.Button();
             this.buttonGo = new System.Windows.Forms.Button();
+            this.comboBoxChannels = new System.Windows.Forms.ComboBox();
+            this.labelChannels = new System.Windows.Forms.Label();
             this.groupBoxDeviceInfo.SuspendLayout();
             this.groupBoxContains.SuspendLayout();
             this.SuspendLayout();
@@ -69,6 +71,7 @@
             this.labelMatrixType.Size = new System.Drawing.Size(76, 16);
             this.labelMatrixType.TabIndex = 0;
             this.labelMatrixType.Text = "Matrix type:";
+            this.labelMatrixType.Click += new System.EventHandler(this.comboBoxMatrixType_SelectedIndexChanged);
             // 
             // labelCurrentFW
             // 
@@ -147,9 +150,13 @@
             this.comboBoxMatrixType.Name = "comboBoxMatrixType";
             this.comboBoxMatrixType.Size = new System.Drawing.Size(224, 21);
             this.comboBoxMatrixType.TabIndex = 4;
+            this.comboBoxMatrixType.SelectedIndexChanged += new System.EventHandler(this.comboBoxMatrixType_SelectedIndexChanged);
+            this.comboBoxMatrixType.TextChanged += new System.EventHandler(this.comboBoxMatrixType_TextChanged);
             // 
             // groupBoxContains
             // 
+            this.groupBoxContains.Controls.Add(this.labelChannels);
+            this.groupBoxContains.Controls.Add(this.comboBoxChannels);
             this.groupBoxContains.Controls.Add(this.comboBoxLogicOperator);
             this.groupBoxContains.Controls.Add(this.comboBoxDiagnostics);
             this.groupBoxContains.Controls.Add(this.labelPCIP);
@@ -168,7 +175,7 @@
             this.groupBoxContains.Controls.Add(this.labelCode);
             this.groupBoxContains.Location = new System.Drawing.Point(22, 143);
             this.groupBoxContains.Name = "groupBoxContains";
-            this.groupBoxContains.Size = new System.Drawing.Size(391, 294);
+            this.groupBoxContains.Size = new System.Drawing.Size(391, 337);
             this.groupBoxContains.TabIndex = 4;
             this.groupBoxContains.TabStop = false;
             this.groupBoxContains.Text = "Startup Contains:";
@@ -185,7 +192,7 @@
             // comboBoxDiagnostics
             // 
             this.comboBoxDiagnostics.FormattingEnabled = true;
-            this.comboBoxDiagnostics.Location = new System.Drawing.Point(119, 235);
+            this.comboBoxDiagnostics.Location = new System.Drawing.Point(119, 285);
             this.comboBoxDiagnostics.Name = "comboBoxDiagnostics";
             this.comboBoxDiagnostics.Size = new System.Drawing.Size(224, 21);
             this.comboBoxDiagnostics.TabIndex = 22;
@@ -194,7 +201,7 @@
             // 
             this.labelPCIP.AutoSize = true;
             this.labelPCIP.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPCIP.Location = new System.Drawing.Point(78, 200);
+            this.labelPCIP.Location = new System.Drawing.Point(78, 250);
             this.labelPCIP.Name = "labelPCIP";
             this.labelPCIP.Size = new System.Drawing.Size(72, 16);
             this.labelPCIP.TabIndex = 21;
@@ -204,7 +211,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(18, 235);
+            this.label1.Location = new System.Drawing.Point(18, 285);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(82, 16);
             this.label1.TabIndex = 20;
@@ -212,7 +219,7 @@
             // 
             // textBoxDeviceIP
             // 
-            this.textBoxDeviceIP.Location = new System.Drawing.Point(156, 196);
+            this.textBoxDeviceIP.Location = new System.Drawing.Point(156, 246);
             this.textBoxDeviceIP.Name = "textBoxDeviceIP";
             this.textBoxDeviceIP.Size = new System.Drawing.Size(149, 20);
             this.textBoxDeviceIP.TabIndex = 9;
@@ -220,7 +227,7 @@
             // comboBoxImageSaving
             // 
             this.comboBoxImageSaving.FormattingEnabled = true;
-            this.comboBoxImageSaving.Location = new System.Drawing.Point(119, 159);
+            this.comboBoxImageSaving.Location = new System.Drawing.Point(119, 209);
             this.comboBoxImageSaving.Name = "comboBoxImageSaving";
             this.comboBoxImageSaving.Size = new System.Drawing.Size(100, 21);
             this.comboBoxImageSaving.TabIndex = 19;
@@ -228,7 +235,7 @@
             // comboBoxFieldbus
             // 
             this.comboBoxFieldbus.FormattingEnabled = true;
-            this.comboBoxFieldbus.Location = new System.Drawing.Point(119, 125);
+            this.comboBoxFieldbus.Location = new System.Drawing.Point(119, 175);
             this.comboBoxFieldbus.Name = "comboBoxFieldbus";
             this.comboBoxFieldbus.Size = new System.Drawing.Size(100, 21);
             this.comboBoxFieldbus.TabIndex = 18;
@@ -271,7 +278,7 @@
             // 
             this.labelImageSaving.AutoSize = true;
             this.labelImageSaving.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelImageSaving.Location = new System.Drawing.Point(17, 163);
+            this.labelImageSaving.Location = new System.Drawing.Point(17, 213);
             this.labelImageSaving.Name = "labelImageSaving";
             this.labelImageSaving.Size = new System.Drawing.Size(96, 16);
             this.labelImageSaving.TabIndex = 13;
@@ -281,7 +288,7 @@
             // 
             this.labelFieldbus.AutoSize = true;
             this.labelFieldbus.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelFieldbus.Location = new System.Drawing.Point(18, 130);
+            this.labelFieldbus.Location = new System.Drawing.Point(18, 180);
             this.labelFieldbus.Name = "labelFieldbus";
             this.labelFieldbus.Size = new System.Drawing.Size(65, 16);
             this.labelFieldbus.TabIndex = 12;
@@ -320,28 +327,48 @@
             // buttonExport
             // 
             this.buttonExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonExport.Location = new System.Drawing.Point(252, 455);
+            this.buttonExport.Location = new System.Drawing.Point(252, 509);
             this.buttonExport.Name = "buttonExport";
             this.buttonExport.Size = new System.Drawing.Size(75, 23);
             this.buttonExport.TabIndex = 5;
             this.buttonExport.Text = "Export";
             this.buttonExport.UseVisualStyleBackColor = true;
+            this.buttonExport.Click += new System.EventHandler(this.buttonExport_Click);
             // 
             // buttonGo
             // 
             this.buttonGo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonGo.Location = new System.Drawing.Point(338, 455);
+            this.buttonGo.Location = new System.Drawing.Point(338, 509);
             this.buttonGo.Name = "buttonGo";
             this.buttonGo.Size = new System.Drawing.Size(75, 23);
             this.buttonGo.TabIndex = 6;
             this.buttonGo.Text = "Go";
             this.buttonGo.UseVisualStyleBackColor = true;
             // 
+            // comboBoxChannels
+            // 
+            this.comboBoxChannels.FormattingEnabled = true;
+            this.comboBoxChannels.Location = new System.Drawing.Point(119, 135);
+            this.comboBoxChannels.Name = "comboBoxChannels";
+            this.comboBoxChannels.Size = new System.Drawing.Size(224, 21);
+            this.comboBoxChannels.TabIndex = 25;
+            // 
+            // labelChannels
+            // 
+            this.labelChannels.AutoSize = true;
+            this.labelChannels.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelChannels.Location = new System.Drawing.Point(17, 136);
+            this.labelChannels.Name = "labelChannels";
+            this.labelChannels.Size = new System.Drawing.Size(74, 16);
+            this.labelChannels.TabIndex = 26;
+            this.labelChannels.Text = "-Channels: ";
+            this.labelChannels.Click += new System.EventHandler(this.label2_Click);
+            // 
             // FormBaseApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(461, 490);
+            this.ClientSize = new System.Drawing.Size(461, 544);
             this.Controls.Add(this.buttonGo);
             this.Controls.Add(this.buttonExport);
             this.Controls.Add(this.groupBoxContains);
@@ -386,6 +413,8 @@
         private System.Windows.Forms.ComboBox comboBoxLogicOperator;
         private System.Windows.Forms.Button buttonExport;
         private System.Windows.Forms.Button buttonGo;
+        private System.Windows.Forms.Label labelChannels;
+        private System.Windows.Forms.ComboBox comboBoxChannels;
     }
 }
 
