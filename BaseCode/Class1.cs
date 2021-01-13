@@ -7,7 +7,7 @@ using System.IO;
 namespace BaseCode
 {
     public class Class1
-    {//Duy
+    {
         public List<string[]> ReturnResultComboBoxs(string model)
         {
             int i = 0;
