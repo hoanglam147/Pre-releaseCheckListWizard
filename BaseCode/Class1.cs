@@ -12,7 +12,7 @@ namespace BaseCode
         {
             int i = 0;
             var From = new List<string>();
-            string[] CountRow = File.ReadAllLines(@"C:\Users\dnguyen4\Desktop\Checklist1.csv");
+            string[] CountRow = File.ReadAllLines(AppDomain.CurrentDomain.BaseDirectory + "ComboBoxDescription.csv");
             List<string[]> a = new List<string[]>();
             int temp = 0;
             for (i = 0; i < CountRow.Length; i++)

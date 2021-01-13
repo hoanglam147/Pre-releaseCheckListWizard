@@ -38,6 +38,8 @@
             this.labelUpgradeTo = new System.Windows.Forms.Label();
             this.comboBoxMatrixType = new System.Windows.Forms.ComboBox();
             this.groupBoxContains = new System.Windows.Forms.GroupBox();
+            this.labelChannels = new System.Windows.Forms.Label();
+            this.comboBoxChannels = new System.Windows.Forms.ComboBox();
             this.comboBoxLogicOperator = new System.Windows.Forms.ComboBox();
             this.comboBoxDiagnostics = new System.Windows.Forms.ComboBox();
             this.labelPCIP = new System.Windows.Forms.Label();
@@ -56,8 +58,6 @@
             this.labelCode = new System.Windows.Forms.Label();
             this.buttonExport = new System.Windows.Forms.Button();
             this.buttonGo = new System.Windows.Forms.Button();
-            this.comboBoxChannels = new System.Windows.Forms.ComboBox();
-            this.labelChannels = new System.Windows.Forms.Label();
             this.groupBoxDeviceInfo.SuspendLayout();
             this.groupBoxContains.SuspendLayout();
             this.SuspendLayout();
@@ -181,6 +181,25 @@
             this.groupBoxContains.Text = "Startup Contains:";
             this.groupBoxContains.Enter += new System.EventHandler(this.groupBoxContains_Enter);
             // 
+            // labelChannels
+            // 
+            this.labelChannels.AutoSize = true;
+            this.labelChannels.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelChannels.Location = new System.Drawing.Point(17, 136);
+            this.labelChannels.Name = "labelChannels";
+            this.labelChannels.Size = new System.Drawing.Size(74, 16);
+            this.labelChannels.TabIndex = 26;
+            this.labelChannels.Text = "-Channels: ";
+            this.labelChannels.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // comboBoxChannels
+            // 
+            this.comboBoxChannels.FormattingEnabled = true;
+            this.comboBoxChannels.Location = new System.Drawing.Point(119, 135);
+            this.comboBoxChannels.Name = "comboBoxChannels";
+            this.comboBoxChannels.Size = new System.Drawing.Size(224, 21);
+            this.comboBoxChannels.TabIndex = 25;
+            // 
             // comboBoxLogicOperator
             // 
             this.comboBoxLogicOperator.FormattingEnabled = true;
@@ -245,7 +264,7 @@
             this.comboBoxAnalysis.FormattingEnabled = true;
             this.comboBoxAnalysis.Location = new System.Drawing.Point(119, 96);
             this.comboBoxAnalysis.Name = "comboBoxAnalysis";
-            this.comboBoxAnalysis.Size = new System.Drawing.Size(100, 21);
+            this.comboBoxAnalysis.Size = new System.Drawing.Size(124, 21);
             this.comboBoxAnalysis.TabIndex = 17;
             // 
             // comboBoxModes
@@ -344,25 +363,7 @@
             this.buttonGo.TabIndex = 6;
             this.buttonGo.Text = "Go";
             this.buttonGo.UseVisualStyleBackColor = true;
-            // 
-            // comboBoxChannels
-            // 
-            this.comboBoxChannels.FormattingEnabled = true;
-            this.comboBoxChannels.Location = new System.Drawing.Point(119, 135);
-            this.comboBoxChannels.Name = "comboBoxChannels";
-            this.comboBoxChannels.Size = new System.Drawing.Size(224, 21);
-            this.comboBoxChannels.TabIndex = 25;
-            // 
-            // labelChannels
-            // 
-            this.labelChannels.AutoSize = true;
-            this.labelChannels.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelChannels.Location = new System.Drawing.Point(17, 136);
-            this.labelChannels.Name = "labelChannels";
-            this.labelChannels.Size = new System.Drawing.Size(74, 16);
-            this.labelChannels.TabIndex = 26;
-            this.labelChannels.Text = "-Channels: ";
-            this.labelChannels.Click += new System.EventHandler(this.label2_Click);
+            this.buttonGo.Click += new System.EventHandler(this.buttonGo_Click);
             // 
             // FormBaseApp
             // 
