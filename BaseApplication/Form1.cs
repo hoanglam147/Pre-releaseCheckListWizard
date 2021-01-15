@@ -198,12 +198,12 @@ namespace BaseApplication
             return hash;
         }
         private void comboBoxMatrixType_SelectedIndexChanged(object sender, EventArgs e)
-        {            
+        {
+            
             Class1 class1 = new Class1();            
             List<string[]> AllItem = class1.ReturnResultComboBoxs(comboBoxMatrixType.Text);
             Hashtable cbxTable = CreateHashTableNameCBX_CBX();            
-            string cbxDescription = "";
-            string itemAdd = "";            
+            string cbxDescription = "";        
             for (int i=1; i< AllItem.Count; i++)
             {
                 cbxDescription = AllItem[i][0];                
@@ -215,6 +215,16 @@ namespace BaseApplication
                     cbx.Items.Add(AllItem[i][k]);                    
                 }
             }
+            //Duyadd
+            string device = comboBoxMatrixType.Text;
+            string devicetype = device.Substring(1,3);
+            int deviceint = Int16.Parse(devicetype);
+            if (deviceint < 300)
+            {
+                comboBoxModes.Items.Remove("PackTrack");
+            }
+
+
 
         }
 
@@ -256,6 +266,37 @@ namespace BaseApplication
             var formRun = new PopUpInfoForm();
             formRun.Show();
         }
-       
+
+        private void comboBoxModes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+
+        }
+
+        private void comboBoxChannels_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxCurrentFW_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxUpgradeFrom_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxAnalysis_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           string valueAnalysis =  comboBoxAnalysis.Text;
+            if(valueAnalysis== "Code Collection" || valueAnalysis == "Code Presentation")
+            {
+                comboBoxLogicOperator.Enabled = false;
+            }
+            
+            
+        }
     }
 }

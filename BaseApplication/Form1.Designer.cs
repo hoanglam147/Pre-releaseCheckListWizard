@@ -124,6 +124,7 @@
             this.comboBoxCurrentFW.Name = "comboBoxCurrentFW";
             this.comboBoxCurrentFW.Size = new System.Drawing.Size(100, 21);
             this.comboBoxCurrentFW.TabIndex = 10;
+            this.comboBoxCurrentFW.SelectedIndexChanged += new System.EventHandler(this.comboBoxCurrentFW_SelectedIndexChanged);
             // 
             // comboBoxUpgradeFrom
             // 
@@ -132,6 +133,7 @@
             this.comboBoxUpgradeFrom.Name = "comboBoxUpgradeFrom";
             this.comboBoxUpgradeFrom.Size = new System.Drawing.Size(100, 21);
             this.comboBoxUpgradeFrom.TabIndex = 23;
+            this.comboBoxUpgradeFrom.SelectedIndexChanged += new System.EventHandler(this.comboBoxUpgradeFrom_SelectedIndexChanged);
             // 
             // labelUpgradeTo
             // 
@@ -199,6 +201,7 @@
             this.comboBoxChannels.Name = "comboBoxChannels";
             this.comboBoxChannels.Size = new System.Drawing.Size(224, 21);
             this.comboBoxChannels.TabIndex = 25;
+            this.comboBoxChannels.SelectedIndexChanged += new System.EventHandler(this.comboBoxChannels_SelectedIndexChanged);
             // 
             // comboBoxLogicOperator
             // 
@@ -266,6 +269,7 @@
             this.comboBoxAnalysis.Name = "comboBoxAnalysis";
             this.comboBoxAnalysis.Size = new System.Drawing.Size(124, 21);
             this.comboBoxAnalysis.TabIndex = 17;
+            this.comboBoxAnalysis.SelectedIndexChanged += new System.EventHandler(this.comboBoxAnalysis_SelectedIndexChanged);
             // 
             // comboBoxModes
             // 
@@ -274,6 +278,7 @@
             this.comboBoxModes.Name = "comboBoxModes";
             this.comboBoxModes.Size = new System.Drawing.Size(224, 21);
             this.comboBoxModes.TabIndex = 16;
+            this.comboBoxModes.SelectedIndexChanged += new System.EventHandler(this.comboBoxModes_SelectedIndexChanged);
             // 
             // comboBoxCode2
             // 

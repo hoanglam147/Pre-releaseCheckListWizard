@@ -26,7 +26,6 @@ namespace BaseCode
                         {
                             break;
                         }
-
                         string[] b = CountRow[temp].Split(',');
                         b = b.Where(w => w != "").ToArray();
                         a.Add(b);
