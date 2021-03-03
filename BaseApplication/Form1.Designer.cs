@@ -189,9 +189,9 @@
             this.labelChannels.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelChannels.Location = new System.Drawing.Point(17, 136);
             this.labelChannels.Name = "labelChannels";
-            this.labelChannels.Size = new System.Drawing.Size(74, 16);
+            this.labelChannels.Size = new System.Drawing.Size(69, 16);
             this.labelChannels.TabIndex = 26;
-            this.labelChannels.Text = "-Channels: ";
+            this.labelChannels.Text = "Channels: ";
             this.labelChannels.Click += new System.EventHandler(this.label2_Click);
             // 
             // comboBoxChannels
@@ -214,7 +214,7 @@
             // comboBoxDiagnostics
             // 
             this.comboBoxDiagnostics.FormattingEnabled = true;
-            this.comboBoxDiagnostics.Location = new System.Drawing.Point(119, 285);
+            this.comboBoxDiagnostics.Location = new System.Drawing.Point(118, 284);
             this.comboBoxDiagnostics.Name = "comboBoxDiagnostics";
             this.comboBoxDiagnostics.Size = new System.Drawing.Size(224, 21);
             this.comboBoxDiagnostics.TabIndex = 22;
@@ -223,7 +223,7 @@
             // 
             this.labelPCIP.AutoSize = true;
             this.labelPCIP.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPCIP.Location = new System.Drawing.Point(78, 250);
+            this.labelPCIP.Location = new System.Drawing.Point(41, 247);
             this.labelPCIP.Name = "labelPCIP";
             this.labelPCIP.Size = new System.Drawing.Size(72, 16);
             this.labelPCIP.TabIndex = 21;
@@ -235,13 +235,13 @@
             this.label1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(18, 285);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 16);
+            this.label1.Size = new System.Drawing.Size(77, 16);
             this.label1.TabIndex = 20;
-            this.label1.Text = "-Diagnostics:";
+            this.label1.Text = "Diagnostics:";
             // 
             // textBoxDeviceIP
             // 
-            this.textBoxDeviceIP.Location = new System.Drawing.Point(156, 246);
+            this.textBoxDeviceIP.Location = new System.Drawing.Point(119, 247);
             this.textBoxDeviceIP.Name = "textBoxDeviceIP";
             this.textBoxDeviceIP.Size = new System.Drawing.Size(149, 20);
             this.textBoxDeviceIP.TabIndex = 9;
@@ -249,17 +249,18 @@
             // comboBoxImageSaving
             // 
             this.comboBoxImageSaving.FormattingEnabled = true;
-            this.comboBoxImageSaving.Location = new System.Drawing.Point(119, 209);
+            this.comboBoxImageSaving.Location = new System.Drawing.Point(119, 208);
             this.comboBoxImageSaving.Name = "comboBoxImageSaving";
-            this.comboBoxImageSaving.Size = new System.Drawing.Size(100, 21);
+            this.comboBoxImageSaving.Size = new System.Drawing.Size(223, 21);
             this.comboBoxImageSaving.TabIndex = 19;
+            this.comboBoxImageSaving.SelectedIndexChanged += new System.EventHandler(this.comboBoxImageSaving_SelectedIndexChanged);
             // 
             // comboBoxFieldbus
             // 
             this.comboBoxFieldbus.FormattingEnabled = true;
             this.comboBoxFieldbus.Location = new System.Drawing.Point(119, 175);
             this.comboBoxFieldbus.Name = "comboBoxFieldbus";
-            this.comboBoxFieldbus.Size = new System.Drawing.Size(100, 21);
+            this.comboBoxFieldbus.Size = new System.Drawing.Size(224, 21);
             this.comboBoxFieldbus.TabIndex = 18;
             // 
             // comboBoxAnalysis
@@ -269,7 +270,7 @@
             this.comboBoxAnalysis.Name = "comboBoxAnalysis";
             this.comboBoxAnalysis.Size = new System.Drawing.Size(124, 21);
             this.comboBoxAnalysis.TabIndex = 17;
-            this.comboBoxAnalysis.SelectedIndexChanged += new System.EventHandler(this.comboBoxAnalysis_SelectedIndexChanged);
+            this.comboBoxAnalysis.SelectedIndexChanged += new System.EventHandler(this.comboBoxAnalysis_SelectedIndexChanged_1);
             // 
             // comboBoxModes
             // 
@@ -297,6 +298,7 @@
             this.comboBoxCode1.Size = new System.Drawing.Size(100, 21);
             this.comboBoxCode1.TabIndex = 9;
             this.comboBoxCode1.SelectedIndexChanged += new System.EventHandler(this.OnComboBoxSelectedChange);
+            this.comboBoxCode1.SizeChanged += new System.EventHandler(this.comboBoxImageSaving_SelectedIndexChanged);
             // 
             // labelImageSaving
             // 
@@ -304,9 +306,9 @@
             this.labelImageSaving.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelImageSaving.Location = new System.Drawing.Point(17, 213);
             this.labelImageSaving.Name = "labelImageSaving";
-            this.labelImageSaving.Size = new System.Drawing.Size(96, 16);
+            this.labelImageSaving.Size = new System.Drawing.Size(91, 16);
             this.labelImageSaving.TabIndex = 13;
-            this.labelImageSaving.Text = "-Image Saving:";
+            this.labelImageSaving.Text = "Image Saving:";
             // 
             // labelFieldbus
             // 
@@ -314,9 +316,9 @@
             this.labelFieldbus.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelFieldbus.Location = new System.Drawing.Point(18, 180);
             this.labelFieldbus.Name = "labelFieldbus";
-            this.labelFieldbus.Size = new System.Drawing.Size(65, 16);
+            this.labelFieldbus.Size = new System.Drawing.Size(60, 16);
             this.labelFieldbus.TabIndex = 12;
-            this.labelFieldbus.Text = "-Fieldbus:";
+            this.labelFieldbus.Text = "Fieldbus:";
             // 
             // label4
             // 
@@ -324,9 +326,10 @@
             this.label4.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(17, 101);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(68, 16);
+            this.label4.Size = new System.Drawing.Size(63, 16);
             this.label4.TabIndex = 11;
-            this.label4.Text = "-Analysis: ";
+            this.label4.Text = "Analysis: ";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // labelModes
             // 
@@ -334,9 +337,9 @@
             this.labelModes.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelModes.Location = new System.Drawing.Point(17, 69);
             this.labelModes.Name = "labelModes";
-            this.labelModes.Size = new System.Drawing.Size(55, 16);
+            this.labelModes.Size = new System.Drawing.Size(50, 16);
             this.labelModes.TabIndex = 10;
-            this.labelModes.Text = "-Modes:";
+            this.labelModes.Text = "Modes:";
             // 
             // labelCode
             // 
@@ -344,9 +347,9 @@
             this.labelCode.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelCode.Location = new System.Drawing.Point(18, 36);
             this.labelCode.Name = "labelCode";
-            this.labelCode.Size = new System.Drawing.Size(57, 16);
+            this.labelCode.Size = new System.Drawing.Size(52, 16);
             this.labelCode.TabIndex = 9;
-            this.labelCode.Text = "-Codes: ";
+            this.labelCode.Text = "Codes: ";
             // 
             // buttonExport
             // 

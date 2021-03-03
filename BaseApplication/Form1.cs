@@ -11,6 +11,7 @@ using System.IO;
 using BaseCode;
 using System.Collections;
 using System.Diagnostics;
+using static System.Windows.Forms.ComboBox;
 
 namespace BaseApplication
 {
@@ -73,6 +74,61 @@ namespace BaseApplication
                     allCbx[i].Items.Add(line);                    
                 }
             }            
+        }
+        private void InitComboComboBoxItemSelected ()
+        {
+            ComboBox[] allCbx =  ClearChannelsFieldbusDiagnosticImageSavingComboBox();
+            string[] lines = File.ReadAllLines(AppDomain.CurrentDomain.BaseDirectory + "ConfiugreAllComboBox.ini");
+            bool tagToContinue = false;
+            for (int i = 0; i < allCbx.Length; i++)
+            {
+                tagToContinue = false;
+                foreach (string line in lines)
+                {
+                    if (line.Contains("Begin") && line.Contains(allCbx[i].Name))
+                    {
+                        tagToContinue = false;
+                        continue;
+                    }
+                    else if (line.Contains("Begin") && !line.Contains(allCbx[i].Name))
+                    {
+                        tagToContinue = true;
+                        continue;
+                    }
+                    else if (tagToContinue)
+                    {
+                        continue;
+                    }
+                    else if (line.Contains("End") && line.Contains(allCbx[i].Name))
+                    {
+                        break;
+                    }
+
+                    allCbx[i].Items.Add(line);
+                }
+            }
+        }
+        private ComboBox[] ClearChannelsFieldbusDiagnosticImageSavingComboBox()
+        {
+            // here saved the width of all combo box user for laters
+            width__ComboBoxAnalysis = comboBoxAnalysis.Width;
+            width__ComboBoxFieldbus = comboBoxFieldbus.Width;
+            width__ComboBoxImageSaving = comboBoxImageSaving.Width;
+            width__ComboBoxDiagnostics = comboBoxDiagnostics.Width;
+
+            // clear  combo box
+            comboBoxChannels.Items.Clear();
+            comboBoxFieldbus.Items.Clear();
+            comboBoxImageSaving.Items.Clear();
+            comboBoxDiagnostics.Items.Clear();
+            ComboBox[] allCbx =
+                {
+                 comboBoxChannels, comboBoxImageSaving,
+                comboBoxFieldbus, comboBoxDiagnostics
+                };
+            return allCbx;
+
+
         }
         private ComboBox[] ClearAllComboBox()
         {
@@ -199,29 +255,77 @@ namespace BaseApplication
         }
         private void comboBoxMatrixType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
-            Class1 class1 = new Class1();            
-            List<string[]> AllItem = class1.ReturnResultComboBoxs(comboBoxMatrixType.Text);
-            Hashtable cbxTable = CreateHashTableNameCBX_CBX();            
-            string cbxDescription = "";        
-            for (int i=1; i< AllItem.Count; i++)
+            comboBoxCurrentFW.Enabled = false;
+
+            Class1 class1 = new Class1();
+            ClassAllDataCsv AllItem = new ClassAllDataCsv();
+            AllItem = class1.ReturnResultComboBoxs(comboBoxMatrixType.Text);
+            Hashtable cbxTable = CreateHashTableNameCBX_CBX();
+            string cbxDescription = "";
+            string[] ItemsCbx ;
+            ComboBox cbx = (ComboBox)cbxTable[cbxDescription];
+            //cbx.Items.Clear();
+
+            foreach (ComboBox value in cbxTable.Values)
             {
-                cbxDescription = AllItem[i][0];                
-                ComboBox cbx = (ComboBox)cbxTable[cbxDescription];
-                cbx.Items.Clear();
-                
-                for(int k = 1; k< AllItem[i].Length;k++)
+                var nameCBX= value.Name;
+                //cbx = (ComboBox)cbxTable[value];
+                if (nameCBX != "comboBoxMatrixType")
                 {
-                    cbx.Items.Add(AllItem[i][k]);                    
+
+                    value.Text = string.Empty;
                 }
+
+            }
+
+
+            for (int i = 1; i < AllItem.NonOriginal.Count; i++)
+            {
+                cbxDescription = AllItem.NonOriginal[i][0];
+                cbx = (ComboBox)cbxTable[cbxDescription];
+                cbx.Items.Clear();
+
+                for (int k = 1; k < AllItem.NonOriginal[i].Length; k++)
+                {
+                    cbx.Items.Add(AllItem.NonOriginal[i][k]);
+                    //if (cbx.Name != "comboBoxMatrixType")
+                    //{
+
+                    //    cbx.Text = string.Empty;
+                    //}
+
+
+                }
+
             }
             //Duyadd
             string device = comboBoxMatrixType.Text;
             string devicetype = device.Substring(1,3);
             int deviceint = Int16.Parse(devicetype);
+            
             if (deviceint < 300)
+            {   
+                if(comboBoxModes.Items.Contains("PackTrack"))
+                {
+                    comboBoxModes.Items.Remove("PackTrack");
+                }
+                else
+                {
+                    //Do nothing
+                }
+                
+            }
+            else
             {
-                comboBoxModes.Items.Remove("PackTrack");
+                if (comboBoxModes.Items.Contains("PackTrack"))
+                {
+                    //comboBoxModes.Items.Insert(4, "PackTrack");
+                }
+                else
+                {
+                    comboBoxModes.Items.Insert(4, "PackTrack");
+
+                }
             }
 
 
@@ -269,22 +373,212 @@ namespace BaseApplication
 
         private void comboBoxModes_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            
 
         }
 
         private void comboBoxChannels_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+          
         }
 
         private void comboBoxCurrentFW_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            
         }
 
         private void comboBoxUpgradeFrom_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Hashtable cbxTable = CreateHashTableNameCBX_CBX();
+            //ComboBox value;
+            foreach (ComboBox value in cbxTable.Values)
+            {
+                //var nameCBX = value.Name;
+                //cbx = (ComboBox)cbxTable[value];
+                if (value.Name != "comboBoxMatrixType"&&
+                    value.Name != "comboBoxUpgradeTo" &&
+                    value.Name != "comboBoxCurrentFW"&&
+                    value.Name != "comboBoxUpgradeFrom")
+                {
+
+                    //value.Text = string.Empty;
+                    value.ResetText();
+                }
+            }
+            //// Condition For Combobox Mode BEGING
+            string fromValue = comboBoxUpgradeFrom.Text;
+            //var jhggk = fromValue.Substring(2, 1);
+            int numberValueFrom = Int16.Parse(fromValue.Substring(2, 1));
+            if(numberValueFrom< 5)
+            {
+                if (comboBoxModes.Items.Contains("Presentation Mode"))
+                {
+                    comboBoxModes.Items.Remove("Presentation Mode");
+                }
+                else
+                {
+                    //Do nothing
+                }
+
+            }
+            else
+            {
+                if (comboBoxModes.Items.Contains("Presentation Mode"))
+                {
+                    //comboBoxModes.Items.Insert(4, "PackTrack");
+                }
+                else
+                {
+                    comboBoxModes.Items.Insert(5, "Presentation Mode");
+
+                }
+            }
+
+
+            ///Condition For Combobox Mode  END
+            Class1 class1 = new Class1();
+            ClassAllDataCsv AllItem = class1.ReturnResultComboBoxs(comboBoxMatrixType.Text);
+            string cbxDescription = "";
+            ComboBox cbx = (ComboBox)cbxTable[cbxDescription];
+            //cbx.Items.Clear();
+
+
+            for (int i = 1; i < AllItem.Original.Count; i++)
+            {
+                cbxDescription = AllItem.Original[i][0];
+                cbx = (ComboBox)cbxTable[cbxDescription];
+                if (cbx.Name != "comboBoxUpgradeFrom")
+                {
+                    //cbx.ResetText();
+                    cbx.Items.Clear();
+                }
+                for (int k = 1; k < AllItem.Original[i].Length; k++)
+                {
+                    if (cbx.Name != "comboBoxUpgradeFrom")
+                    {
+                        cbx.Items.Add(AllItem.Original[i][k]);
+                    }
+
+                }
+
+            }
+
+
+
+            //////////////////////////////////////
+            string ValueChannels = "";
+            string VersionFWChannels = "";
+            ArrayList FW = new ArrayList();
+            char expecialWordsOpen = '[';
+            char expecialWordsClose = ']';
+            string FWString;
+            string ComboboxItemsAll;
+            int countFW=0;
+            Boolean CheckAllFW = false;
+            ComboBox[] ForCBXchange = new ComboBox[4] ;
+            ForCBXchange[0]= comboBoxChannels;
+            ForCBXchange[1]= comboBoxFieldbus;
+            ForCBXchange[2]= comboBoxImageSaving;
+            ForCBXchange[3]= comboBoxDiagnostics;
+            string FromToFW = comboBoxUpgradeFrom.Text;
+            int q = 0;
+            for (q = 0; q < ForCBXchange.Length; q++)
+            {
+
+                FromToFW = comboBoxUpgradeFrom.Text;
+                string[] comboBoxChannelsItems = new string[ForCBXchange[q].Items.Count];
+                for (int k = 0; k < ForCBXchange[q].Items.Count; k++)
+                {
+                    comboBoxChannelsItems[k] = ForCBXchange[q].Items[k].ToString();
+                }
+                ForCBXchange[q].Items.Clear();
+                for (int k = 0; k < comboBoxChannelsItems.Length; k++)
+                {
+                    ValueChannels = "";
+                    ComboboxItemsAll = comboBoxChannelsItems[k].ToString();
+                    for (int i = 0; i < ComboboxItemsAll.Length; i++)
+                    {
+                        if (ComboboxItemsAll.Contains(expecialWordsOpen))
+                        {
+                            CheckAllFW = false;
+                        }
+                        else
+                        {
+                            CheckAllFW = true;
+                        }
+                        if (ComboboxItemsAll[i] == expecialWordsOpen)
+                        {
+                            i++;
+                            while (ComboboxItemsAll[i] != expecialWordsClose)
+                            {
+                                if (ComboboxItemsAll[i] == '/')
+                                {
+                                    FW.Add(VersionFWChannels);
+                                    VersionFWChannels = "";
+                                    i++;
+                                }
+                                else
+                                {
+                                    VersionFWChannels = VersionFWChannels + ComboboxItemsAll[i];
+                                    i++;
+                                }
+                            }
+                            FW.Add(VersionFWChannels);
+                            VersionFWChannels = "";
+                            break;
+                        }
+                        ValueChannels = ValueChannels + ComboboxItemsAll[i];
+                    }
+                    if (CheckAllFW == true)
+                    {
+
+                        if (ForCBXchange[q].Name == "comboBoxChannels")
+                        {
+                            comboBoxChannels.Items.Add(ValueChannels);
+                        }
+                        else if (ForCBXchange[q].Name == "comboBoxFieldbus")
+                        {
+                            comboBoxFieldbus.Items.Add(ValueChannels);
+                        }
+                        else if (ForCBXchange[q].Name == "comboBoxImageSaving")
+                        {
+                            comboBoxImageSaving.Items.Add(ValueChannels);
+                        }
+                        else
+                        {
+                            comboBoxDiagnostics.Items.Add(ValueChannels);
+                        }
+
+                    }
+                    else
+                    {
+                        while (countFW < FW.Count)
+                        {
+                            FWString = FW[countFW].ToString();
+                            if (FWString == FromToFW)
+                            {
+                                if (ForCBXchange[q].Name == "comboBoxChannels")
+                                {
+                                    comboBoxChannels.Items.Add(ValueChannels);
+                                }
+                                else if (ForCBXchange[q].Name == "comboBoxFieldbus")
+                                {
+                                    comboBoxFieldbus.Items.Add(ValueChannels);
+                                }
+                                else if (ForCBXchange[q].Name == "comboBoxImageSaving")
+                                {
+                                    comboBoxImageSaving.Items.Add(ValueChannels);
+                                }
+                                else
+                                {
+                                    comboBoxDiagnostics.Items.Add(ValueChannels);
+                                }
+                            }
+                            countFW++;
+                        }
+                    }
+                }
+            }
 
         }
 
@@ -295,8 +589,39 @@ namespace BaseApplication
             {
                 comboBoxLogicOperator.Enabled = false;
             }
+            else
+            {
+                comboBoxLogicOperator.Enabled = true;
+            }
             
             
+        }
+
+        private void comboBoxAnalysis_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            string valueAnalysis = comboBoxAnalysis.Text;
+            if (valueAnalysis == "Code Collection" ||
+                valueAnalysis == "Code Presentation"||
+                valueAnalysis == "None")
+            {
+                comboBoxLogicOperator.Text = string.Empty;
+                comboBoxLogicOperator.Enabled = false;
+            }
+            else
+            {
+                comboBoxLogicOperator.Text = string.Empty;
+                comboBoxLogicOperator.Enabled = true;
+            }
+        }
+
+        private void comboBoxImageSaving_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
