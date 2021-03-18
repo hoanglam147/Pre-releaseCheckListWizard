@@ -23,7 +23,9 @@ namespace BaseApplication
             string folder = AppDomain.CurrentDomain.BaseDirectory;
             string pythonExeFile = folder + "Python37\\python.exe";
             string pythonScript = folder + "Script_Tool-_JAZZ\\testSElenium\\Add_lib.py";
-            string argv = textBoxUsername.Text + " " + textBoxPassword.Text + " " + textBoxtestPlan.Text + " " + textBoxbuildRecord.Text;
+            string buildRecord = textBoxbuildRecord.Text;
+            buildRecord = buildRecord.Replace(' ', '_');
+            string argv = textBoxUsername.Text + " " + textBoxPassword.Text + " " + textBoxtestPlan.Text + " " + buildRecord;
             ProcessStartInfo start = new ProcessStartInfo();
             start.FileName = pythonExeFile;
             //start.Arguments = string.Format("{0} {1}", @"E:\WORK\IVS.Matrix.300\project\study\Training\JazzTool2\Script_Tool-_JAZZ\testSElenium\Add_lib.py", argv);

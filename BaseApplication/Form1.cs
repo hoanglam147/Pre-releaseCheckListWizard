@@ -103,7 +103,6 @@ namespace BaseApplication
                     {
                         break;
                     }
-
                     allCbx[i].Items.Add(line);
                 }
             }
@@ -201,7 +200,8 @@ namespace BaseApplication
                     comboBoxCode1.Width = width__ComboBoxCode1;
                 }
             }
-            comboBoxCode2.Location = new System.Drawing.Point(comboBoxCode1.Location.X + comboBoxCode1.Width + 31, 31);
+            comboBoxCode2.Location = new System.Drawing.Point(comboBoxCode1.Location.X + comboBoxCode1.Width + 31, 44);
+
             if(comboBoxCode2.Text != "")
             {
                 textSize = TextRenderer.MeasureText(comboBoxCode2.Text, comboBoxCode2.Font);
@@ -253,10 +253,47 @@ namespace BaseApplication
             hash.Add("Diagnostics", comboBoxDiagnostics);
             return hash;
         }
+        private void defaultSettingText()
+        {
+            comboBoxCode1.Text = "DMECC200";
+            comboBoxCode2.Text = "None";
+            comboBoxModes.Text = "Continuous Mode";
+            comboBoxAnalysis.Text = "Code Combination";
+            comboBoxLogicOperator.Text = "AND";
+            comboBoxChannels.Text = "None";
+            comboBoxFieldbus.Text = "None";
+            comboBoxImageSaving.Text = "None";
+            comboBoxDiagnostics.Text = "None";
+            
+        }
+        private void defaultSettingDisable(bool x)
+        {
+            comboBoxCode1.Enabled = x;
+            comboBoxCode2.Enabled = x;
+            comboBoxModes.Enabled = x;
+            comboBoxAnalysis.Enabled = x;
+            comboBoxLogicOperator.Enabled = x;
+            comboBoxChannels.Enabled = x;
+            comboBoxFieldbus.Enabled = x;
+            comboBoxImageSaving.Enabled = x;
+            comboBoxDiagnostics.Enabled = x;
+            textBoxDeviceIP.Enabled = x;
+        }
         private void comboBoxMatrixType_SelectedIndexChanged(object sender, EventArgs e)
         {
             comboBoxCurrentFW.Enabled = false;
-
+            if(comboBoxMatrixType.Text.Contains("M120") || comboBoxMatrixType.Text.Contains("M210"))
+            {
+                radioButtonDefault.Checked = true;
+                defaultSettingText();
+                defaultSettingDisable(false);
+                return;
+            }
+            else
+            {
+                radioButtonUserDefined.Checked = true;
+                defaultSettingDisable(true);
+            }
             Class1 class1 = new Class1();
             ClassAllDataCsv AllItem = new ClassAllDataCsv();
             AllItem = class1.ReturnResultComboBoxs(comboBoxMatrixType.Text);
@@ -352,6 +389,11 @@ namespace BaseApplication
             streamWriter.WriteLine("Upgrade from:" + comboBoxUpgradeFrom.Text);
             streamWriter.WriteLine("Upgrade to:" + comboBoxUpgradeTo.Text);
             streamWriter.WriteLine("***************Configuration contains****************");
+            if(radioButtonDefault.Checked)
+            {
+                streamWriter.WriteLine("DefaultConfiguration");
+            }
+            
             streamWriter.WriteLine("Code 1:" + comboBoxCode1.Text);
             streamWriter.WriteLine("Code 2:" + comboBoxCode2.Text);
             streamWriter.WriteLine("Mode:" + comboBoxModes.Text);
@@ -366,9 +408,16 @@ namespace BaseApplication
         }
         public static string  argv = "";
         private void buttonGo_Click(object sender, EventArgs e)
-        {            
-            var formRun = new PopUpInfoForm();
-            formRun.Show();
+        {
+            if(buttonGo.Text == "Done")
+            {
+                buttonGo.Text = "GO!";                
+            }
+            else if(buttonGo.Text == "GO!")
+            {
+                var formRun = new PopUpInfoForm();
+                formRun.Show();
+            }            
         }
 
         private void comboBoxModes_SelectedIndexChanged(object sender, EventArgs e)
@@ -389,7 +438,14 @@ namespace BaseApplication
 
         private void comboBoxUpgradeFrom_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if(radioButtonDefault.Checked)
+            {
+                defaultSettingText();
+                defaultSettingDisable(false);
+                return;
+            }
             Hashtable cbxTable = CreateHashTableNameCBX_CBX();
+
             //ComboBox value;
             foreach (ComboBox value in cbxTable.Values)
             {
@@ -622,6 +678,27 @@ namespace BaseApplication
         private void label4_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void FormBaseApp_Load(object sender, EventArgs e)
+        {
+
+        }
+
+
+
+        private void radioButtonDefault_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonDefault.Checked)
+            {
+                defaultSettingText();
+            }
+            defaultSettingDisable(!radioButtonDefault.Checked);
+        }
+
+        private void radioButtonUserDefined_CheckedChanged(object sender, EventArgs e)
+        {
+            defaultSettingDisable(!radioButtonDefault.Checked);
         }
     }
 }

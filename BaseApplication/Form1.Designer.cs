@@ -58,6 +58,8 @@
             this.labelCode = new System.Windows.Forms.Label();
             this.buttonExport = new System.Windows.Forms.Button();
             this.buttonGo = new System.Windows.Forms.Button();
+            this.radioButtonUserDefined = new System.Windows.Forms.RadioButton();
+            this.radioButtonDefault = new System.Windows.Forms.RadioButton();
             this.groupBoxDeviceInfo.SuspendLayout();
             this.groupBoxContains.SuspendLayout();
             this.SuspendLayout();
@@ -157,6 +159,8 @@
             // 
             // groupBoxContains
             // 
+            this.groupBoxContains.Controls.Add(this.radioButtonDefault);
+            this.groupBoxContains.Controls.Add(this.radioButtonUserDefined);
             this.groupBoxContains.Controls.Add(this.labelChannels);
             this.groupBoxContains.Controls.Add(this.comboBoxChannels);
             this.groupBoxContains.Controls.Add(this.comboBoxLogicOperator);
@@ -175,19 +179,20 @@
             this.groupBoxContains.Controls.Add(this.label4);
             this.groupBoxContains.Controls.Add(this.labelModes);
             this.groupBoxContains.Controls.Add(this.labelCode);
+            this.groupBoxContains.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxContains.Location = new System.Drawing.Point(22, 143);
             this.groupBoxContains.Name = "groupBoxContains";
-            this.groupBoxContains.Size = new System.Drawing.Size(391, 337);
+            this.groupBoxContains.Size = new System.Drawing.Size(391, 344);
             this.groupBoxContains.TabIndex = 4;
             this.groupBoxContains.TabStop = false;
-            this.groupBoxContains.Text = "Startup Contains:";
+            this.groupBoxContains.Text = "Startup Job";
             this.groupBoxContains.Enter += new System.EventHandler(this.groupBoxContains_Enter);
             // 
             // labelChannels
             // 
             this.labelChannels.AutoSize = true;
             this.labelChannels.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelChannels.Location = new System.Drawing.Point(17, 136);
+            this.labelChannels.Location = new System.Drawing.Point(17, 149);
             this.labelChannels.Name = "labelChannels";
             this.labelChannels.Size = new System.Drawing.Size(69, 16);
             this.labelChannels.TabIndex = 26;
@@ -197,33 +202,33 @@
             // comboBoxChannels
             // 
             this.comboBoxChannels.FormattingEnabled = true;
-            this.comboBoxChannels.Location = new System.Drawing.Point(119, 135);
+            this.comboBoxChannels.Location = new System.Drawing.Point(119, 148);
             this.comboBoxChannels.Name = "comboBoxChannels";
-            this.comboBoxChannels.Size = new System.Drawing.Size(224, 21);
+            this.comboBoxChannels.Size = new System.Drawing.Size(224, 24);
             this.comboBoxChannels.TabIndex = 25;
             this.comboBoxChannels.SelectedIndexChanged += new System.EventHandler(this.comboBoxChannels_SelectedIndexChanged);
             // 
             // comboBoxLogicOperator
             // 
             this.comboBoxLogicOperator.FormattingEnabled = true;
-            this.comboBoxLogicOperator.Location = new System.Drawing.Point(249, 96);
+            this.comboBoxLogicOperator.Location = new System.Drawing.Point(249, 109);
             this.comboBoxLogicOperator.Name = "comboBoxLogicOperator";
-            this.comboBoxLogicOperator.Size = new System.Drawing.Size(93, 21);
+            this.comboBoxLogicOperator.Size = new System.Drawing.Size(93, 24);
             this.comboBoxLogicOperator.TabIndex = 24;
             // 
             // comboBoxDiagnostics
             // 
             this.comboBoxDiagnostics.FormattingEnabled = true;
-            this.comboBoxDiagnostics.Location = new System.Drawing.Point(118, 284);
+            this.comboBoxDiagnostics.Location = new System.Drawing.Point(118, 297);
             this.comboBoxDiagnostics.Name = "comboBoxDiagnostics";
-            this.comboBoxDiagnostics.Size = new System.Drawing.Size(224, 21);
+            this.comboBoxDiagnostics.Size = new System.Drawing.Size(224, 24);
             this.comboBoxDiagnostics.TabIndex = 22;
             // 
             // labelPCIP
             // 
             this.labelPCIP.AutoSize = true;
             this.labelPCIP.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPCIP.Location = new System.Drawing.Point(41, 247);
+            this.labelPCIP.Location = new System.Drawing.Point(41, 260);
             this.labelPCIP.Name = "labelPCIP";
             this.labelPCIP.Size = new System.Drawing.Size(72, 16);
             this.labelPCIP.TabIndex = 21;
@@ -233,7 +238,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(18, 285);
+            this.label1.Location = new System.Drawing.Point(18, 298);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(77, 16);
             this.label1.TabIndex = 20;
@@ -241,61 +246,61 @@
             // 
             // textBoxDeviceIP
             // 
-            this.textBoxDeviceIP.Location = new System.Drawing.Point(119, 247);
+            this.textBoxDeviceIP.Location = new System.Drawing.Point(119, 260);
             this.textBoxDeviceIP.Name = "textBoxDeviceIP";
-            this.textBoxDeviceIP.Size = new System.Drawing.Size(149, 20);
+            this.textBoxDeviceIP.Size = new System.Drawing.Size(149, 23);
             this.textBoxDeviceIP.TabIndex = 9;
             // 
             // comboBoxImageSaving
             // 
             this.comboBoxImageSaving.FormattingEnabled = true;
-            this.comboBoxImageSaving.Location = new System.Drawing.Point(119, 208);
+            this.comboBoxImageSaving.Location = new System.Drawing.Point(119, 221);
             this.comboBoxImageSaving.Name = "comboBoxImageSaving";
-            this.comboBoxImageSaving.Size = new System.Drawing.Size(223, 21);
+            this.comboBoxImageSaving.Size = new System.Drawing.Size(223, 24);
             this.comboBoxImageSaving.TabIndex = 19;
             this.comboBoxImageSaving.SelectedIndexChanged += new System.EventHandler(this.comboBoxImageSaving_SelectedIndexChanged);
             // 
             // comboBoxFieldbus
             // 
             this.comboBoxFieldbus.FormattingEnabled = true;
-            this.comboBoxFieldbus.Location = new System.Drawing.Point(119, 175);
+            this.comboBoxFieldbus.Location = new System.Drawing.Point(119, 188);
             this.comboBoxFieldbus.Name = "comboBoxFieldbus";
-            this.comboBoxFieldbus.Size = new System.Drawing.Size(224, 21);
+            this.comboBoxFieldbus.Size = new System.Drawing.Size(224, 24);
             this.comboBoxFieldbus.TabIndex = 18;
             // 
             // comboBoxAnalysis
             // 
             this.comboBoxAnalysis.FormattingEnabled = true;
-            this.comboBoxAnalysis.Location = new System.Drawing.Point(119, 96);
+            this.comboBoxAnalysis.Location = new System.Drawing.Point(119, 109);
             this.comboBoxAnalysis.Name = "comboBoxAnalysis";
-            this.comboBoxAnalysis.Size = new System.Drawing.Size(124, 21);
+            this.comboBoxAnalysis.Size = new System.Drawing.Size(124, 24);
             this.comboBoxAnalysis.TabIndex = 17;
             this.comboBoxAnalysis.SelectedIndexChanged += new System.EventHandler(this.comboBoxAnalysis_SelectedIndexChanged_1);
             // 
             // comboBoxModes
             // 
             this.comboBoxModes.FormattingEnabled = true;
-            this.comboBoxModes.Location = new System.Drawing.Point(119, 64);
+            this.comboBoxModes.Location = new System.Drawing.Point(119, 77);
             this.comboBoxModes.Name = "comboBoxModes";
-            this.comboBoxModes.Size = new System.Drawing.Size(224, 21);
+            this.comboBoxModes.Size = new System.Drawing.Size(224, 24);
             this.comboBoxModes.TabIndex = 16;
             this.comboBoxModes.SelectedIndexChanged += new System.EventHandler(this.comboBoxModes_SelectedIndexChanged);
             // 
             // comboBoxCode2
             // 
             this.comboBoxCode2.FormattingEnabled = true;
-            this.comboBoxCode2.Location = new System.Drawing.Point(249, 31);
+            this.comboBoxCode2.Location = new System.Drawing.Point(249, 44);
             this.comboBoxCode2.Name = "comboBoxCode2";
-            this.comboBoxCode2.Size = new System.Drawing.Size(94, 21);
+            this.comboBoxCode2.Size = new System.Drawing.Size(94, 24);
             this.comboBoxCode2.TabIndex = 15;
             this.comboBoxCode2.SelectedIndexChanged += new System.EventHandler(this.OnComboBoxSelectedChange);
             // 
             // comboBoxCode1
             // 
             this.comboBoxCode1.FormattingEnabled = true;
-            this.comboBoxCode1.Location = new System.Drawing.Point(119, 31);
+            this.comboBoxCode1.Location = new System.Drawing.Point(119, 44);
             this.comboBoxCode1.Name = "comboBoxCode1";
-            this.comboBoxCode1.Size = new System.Drawing.Size(100, 21);
+            this.comboBoxCode1.Size = new System.Drawing.Size(100, 24);
             this.comboBoxCode1.TabIndex = 9;
             this.comboBoxCode1.SelectedIndexChanged += new System.EventHandler(this.OnComboBoxSelectedChange);
             this.comboBoxCode1.SizeChanged += new System.EventHandler(this.comboBoxImageSaving_SelectedIndexChanged);
@@ -304,7 +309,7 @@
             // 
             this.labelImageSaving.AutoSize = true;
             this.labelImageSaving.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelImageSaving.Location = new System.Drawing.Point(17, 213);
+            this.labelImageSaving.Location = new System.Drawing.Point(17, 226);
             this.labelImageSaving.Name = "labelImageSaving";
             this.labelImageSaving.Size = new System.Drawing.Size(91, 16);
             this.labelImageSaving.TabIndex = 13;
@@ -314,7 +319,7 @@
             // 
             this.labelFieldbus.AutoSize = true;
             this.labelFieldbus.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelFieldbus.Location = new System.Drawing.Point(18, 180);
+            this.labelFieldbus.Location = new System.Drawing.Point(18, 193);
             this.labelFieldbus.Name = "labelFieldbus";
             this.labelFieldbus.Size = new System.Drawing.Size(60, 16);
             this.labelFieldbus.TabIndex = 12;
@@ -324,7 +329,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(17, 101);
+            this.label4.Location = new System.Drawing.Point(17, 114);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(63, 16);
             this.label4.TabIndex = 11;
@@ -335,7 +340,7 @@
             // 
             this.labelModes.AutoSize = true;
             this.labelModes.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelModes.Location = new System.Drawing.Point(17, 69);
+            this.labelModes.Location = new System.Drawing.Point(17, 82);
             this.labelModes.Name = "labelModes";
             this.labelModes.Size = new System.Drawing.Size(50, 16);
             this.labelModes.TabIndex = 10;
@@ -345,7 +350,7 @@
             // 
             this.labelCode.AutoSize = true;
             this.labelCode.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCode.Location = new System.Drawing.Point(18, 36);
+            this.labelCode.Location = new System.Drawing.Point(18, 49);
             this.labelCode.Name = "labelCode";
             this.labelCode.Size = new System.Drawing.Size(52, 16);
             this.labelCode.TabIndex = 9;
@@ -354,7 +359,7 @@
             // buttonExport
             // 
             this.buttonExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonExport.Location = new System.Drawing.Point(252, 509);
+            this.buttonExport.Location = new System.Drawing.Point(238, 508);
             this.buttonExport.Name = "buttonExport";
             this.buttonExport.Size = new System.Drawing.Size(75, 23);
             this.buttonExport.TabIndex = 5;
@@ -365,25 +370,50 @@
             // buttonGo
             // 
             this.buttonGo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonGo.Location = new System.Drawing.Point(338, 509);
+            this.buttonGo.Location = new System.Drawing.Point(324, 508);
             this.buttonGo.Name = "buttonGo";
             this.buttonGo.Size = new System.Drawing.Size(75, 23);
             this.buttonGo.TabIndex = 6;
-            this.buttonGo.Text = "Go";
+            this.buttonGo.Text = "Done";
             this.buttonGo.UseVisualStyleBackColor = true;
             this.buttonGo.Click += new System.EventHandler(this.buttonGo_Click);
+            // 
+            // radioButtonUserDefined
+            // 
+            this.radioButtonUserDefined.AutoSize = true;
+            this.radioButtonUserDefined.Location = new System.Drawing.Point(118, 18);
+            this.radioButtonUserDefined.Name = "radioButtonUserDefined";
+            this.radioButtonUserDefined.Size = new System.Drawing.Size(99, 20);
+            this.radioButtonUserDefined.TabIndex = 28;
+            this.radioButtonUserDefined.TabStop = true;
+            this.radioButtonUserDefined.Text = "User-defined";
+            this.radioButtonUserDefined.UseVisualStyleBackColor = true;
+            this.radioButtonUserDefined.CheckedChanged += new System.EventHandler(this.radioButtonUserDefined_CheckedChanged);
+            // 
+            // radioButtonDefault
+            // 
+            this.radioButtonDefault.AutoSize = true;
+            this.radioButtonDefault.Location = new System.Drawing.Point(14, 18);
+            this.radioButtonDefault.Name = "radioButtonDefault";
+            this.radioButtonDefault.Size = new System.Drawing.Size(66, 20);
+            this.radioButtonDefault.TabIndex = 29;
+            this.radioButtonDefault.TabStop = true;
+            this.radioButtonDefault.Text = "Default";
+            this.radioButtonDefault.UseVisualStyleBackColor = true;
+            this.radioButtonDefault.CheckedChanged += new System.EventHandler(this.radioButtonDefault_CheckedChanged);
             // 
             // FormBaseApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(461, 544);
+            this.ClientSize = new System.Drawing.Size(461, 557);
             this.Controls.Add(this.buttonGo);
             this.Controls.Add(this.buttonExport);
             this.Controls.Add(this.groupBoxContains);
             this.Controls.Add(this.groupBoxDeviceInfo);
             this.Name = "FormBaseApp";
             this.Text = "Pre-release Check List Wizard";
+            this.Load += new System.EventHandler(this.FormBaseApp_Load);
             this.groupBoxDeviceInfo.ResumeLayout(false);
             this.groupBoxDeviceInfo.PerformLayout();
             this.groupBoxContains.ResumeLayout(false);
@@ -424,6 +454,8 @@
         private System.Windows.Forms.Button buttonGo;
         private System.Windows.Forms.Label labelChannels;
         private System.Windows.Forms.ComboBox comboBoxChannels;
+        private System.Windows.Forms.RadioButton radioButtonDefault;
+        private System.Windows.Forms.RadioButton radioButtonUserDefined;
     }
 }
 
